@@ -75,7 +75,8 @@ public:
         TxACK,
         ACKTimeout,
         LinkError,
-        debug_error
+        ping2_detecting,
+        ping2_reply
     };
 
     std::chrono::time_point<std::chrono::steady_clock> start_time;
@@ -108,14 +109,18 @@ void KeepSilence(const float* inBuffer, float* outBuffer, int num_samples) {
 }
 
 void MAC_Layer::refresh_MAC(const float *inBuffer, float *outBuffer, int num_samples) {
-    //if (receiver.received_packet >= 10 && transmitter.transmitted_packet >= 10) {
-    //    auto currentTime = std::chrono::steady_clock::now();
-    //    double duration = std::chrono::duration<double, std::milli>(currentTime - start_time).count();
-    //    if (duration > STOP_THREASHOLD) {
-    //        macState = MAC_States_Set::LinkError;
-    //        return;
-    //    }
-    //}
+    if (macState == MAC_States_Set::ping2_detecting) {
+        // catch packet with pcap
+
+
+        return
+    }
+    else if (macState == MAC_States_Set::ping2_reply) {
+
+    }
+
+
+
 
     /// Idle
     if (macState == MAC_States_Set::Idle) {

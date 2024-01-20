@@ -275,6 +275,7 @@ public:
                         t[i / 8] = tmp;
                     }
                 }
+                received_bits.clear();
                 std::cout << "received url: " << t << std::endl;                
                 
                 return valid_data;
